@@ -1,12 +1,10 @@
-'use strict';
-
-const test = require('node:test');
-const assert = require('node:assert/strict');
-const {
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {
   buildAuditPrompt,
   parseAuditResponse,
   AUDIT_PROTOCOL_VERSION,
-} = require('../../assets/plugins/dsh-plugin-auditor/lib/protocol');
+} from '../../lib/protocol.js';
 
 test('buildAuditPrompt: asks the current session model to inspect code without executing it', () => {
   const prompt = buildAuditPrompt({

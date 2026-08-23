@@ -7,7 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 
-const auditorUrl = pathToFileURL(path.join(__dirname, '..', '..', 'assets', 'plugins', 'dsh-plugin-auditor', 'lib', 'index.js'));
+const auditorUrl = pathToFileURL(path.join(__dirname, '..', '..', 'lib', 'index.js'));
 
 test('resolveActiveSelection prefers the current session selection and labels its source', async () => {
   const { resolveActiveSelection } = await import(auditorUrl);
@@ -26,7 +26,7 @@ test('resolveActiveSelection fails closed when no current model is known', async
 
 test('readActiveSelection reads the configured fallback without hard-coding DeepSeek', async (t) => {
   const { readActiveSelection } = await import(auditorUrl);
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-auditor-settings-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-trustlens-settings-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   fs.writeFileSync(path.join(root, 'settings.yaml'), 'agent-default-model:\n  provider: openai\n  model: gpt-5\nother:\n  model: wrong\n');
   const previous = process.env.DSH_HOME;
@@ -37,7 +37,7 @@ test('readActiveSelection reads the configured fallback without hard-coding Deep
 
 test('packagePathAllowed only accepts a real child of the profile node_modules directory', async (t) => {
   const { packagePathAllowed } = await import(auditorUrl);
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-auditor-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-trustlens-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const nm = path.join(root, 'node_modules');
   const pkg = path.join(nm, '@scope', 'plugin');
@@ -49,7 +49,7 @@ test('packagePathAllowed only accepts a real child of the profile node_modules d
 
 test('createAuditHandler sends the session model to ctx.llm and never executes the package', async (t) => {
   const { createAuditHandler } = await import(auditorUrl);
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-auditor-pkg-'));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'dsh-trustlens-pkg-'));
   t.after(() => fs.rmSync(root, { recursive: true, force: true }));
   const nm = path.join(root, 'node_modules');
   const pkg = path.join(nm, 'safe-plugin');
@@ -78,7 +78,7 @@ test('createAuditHandler sends the session model to ctx.llm and never executes t
 });
 
 test('client action gate does not enable or update when static findings exist', () => {
-  const client = fs.readFileSync(path.join(__dirname, '..', '..', 'assets', 'plugins', 'dsh-plugin-auditor', 'lib', 'client.js'), 'utf8');
+  const client = fs.readFileSync(path.join(__dirname, '..', '..', 'lib', 'client.js'), 'utf8');
   assert.match(client, /const canEnable = report && report\.verdict !== "block" && !result\.staticFindings\?\.length/);
   assert.match(client, /const canUpdate = report && report\.verdict !== "block" && !result\.staticFindings\?\.length/);
 });

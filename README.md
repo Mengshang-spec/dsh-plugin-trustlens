@@ -1,6 +1,6 @@
-# DSH Plugin Auditor
+# DSH TrustLens
 
-`dsh-plugin-auditor` is a DeepSeek Harness plugin that reviews installed plugins before a user enables or updates them.
+`dsh-plugin-trustlens` is a DeepSeek Harness plugin that reviews installed plugins before a user enables or updates them.
 
 It combines:
 
@@ -17,8 +17,8 @@ Copy this package into the DSH profile's `node_modules` directory and add it to 
 
 ```yaml
 - insert:
-    - id: plugin-auditor
-      name: dsh-plugin-auditor
+    - id: plugin-trustlens
+      name: dsh-plugin-trustlens
 ```
 
 The DSH Desktop companion synchronizer performs those two steps automatically for the bundled plugin.
@@ -34,7 +34,7 @@ Static high-risk findings disable the enable/update actions. A user can still ex
 Run from a DSH Desktop checkout with the bundled Node runtime:
 
 ```powershell
-vendor/node/node.exe --test scripts/test/unit-plugin-auditor-protocol.test.js scripts/test/unit-plugin-auditor.test.js
+vendor/node/node.exe --test scripts/test/unit-plugin-trustlens-protocol.test.mjs scripts/test/unit-plugin-trustlens.test.cjs
 ```
 
 ## Limitations

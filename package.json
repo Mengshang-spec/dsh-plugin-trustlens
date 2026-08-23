@@ -1,15 +1,15 @@
 {
-  "name": "dsh-plugin-auditor",
+  "name": "dsh-plugin-trustlens",
   "version": "0.1.0",
   "private": true,
   "description": "DSH 插件安全审查：静态扫描 + 当前会话模型语义审查 + 用户确认",
   "keywords": ["dsh-plugin", "deepseek-harness", "plugin-security", "malware-scanning"],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Mengshang-spec/dsh-plugin-auditor.git"
+    "url": "https://github.com/Mengshang-spec/dsh-plugin-trustlens.git"
   },
   "bugs": {
-    "url": "https://github.com/Mengshang-spec/dsh-plugin-auditor/issues"
+    "url": "https://github.com/Mengshang-spec/dsh-plugin-trustlens/issues"
   },
   "type": "module",
   "main": "lib/index.js",
