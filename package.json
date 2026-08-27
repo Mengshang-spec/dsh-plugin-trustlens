@@ -18,6 +18,10 @@
     "./package.json": "./package.json"
   },
   "license": "MIT",
+  "files": ["lib", "README.md", "LICENSE", "SECURITY.md", "CONTRIBUTING.md", "cordis.patch.yml"],
+  "scripts": {
+    "test": "node --test scripts/test/unit-plugin-trustlens-protocol.test.mjs scripts/test/unit-plugin-trustlens.test.cjs"
+  },
   "dsh": {
     "bundle": { "patch": "./cordis.patch.yml" },
     "client": {
