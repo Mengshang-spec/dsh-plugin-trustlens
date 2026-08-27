@@ -1,7 +1,6 @@
 {
   "name": "dsh-plugin-trustlens",
   "version": "0.1.0",
-  "private": true,
   "description": "DSH 插件安全审查：静态扫描 + 当前会话模型语义审查 + 用户确认",
   "keywords": ["dsh-plugin", "deepseek-harness", "plugin-security", "malware-scanning"],
   "repository": {
@@ -20,6 +19,7 @@
   },
   "license": "MIT",
   "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" },
     "client": {
       "inject": ["@deepseek-ai/dsh-client-runtime", "@deepseek-ai/dsh-client-ui-settings"],
       "platform": "web"
