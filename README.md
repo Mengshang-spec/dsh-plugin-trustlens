@@ -13,7 +13,13 @@ The auditor never requires, imports, launches, installs, downloads, or executes 
 
 ## DSH installation
 
-Copy this package into the DSH profile's `node_modules` directory and add it to the profile patch:
+Install from the repository with the DSH CLI:
+
+```powershell
+dsh plugin --profile web add github:Mengshang-spec/dsh-plugin-trustlens
+```
+
+The package declares its bundle manifest and patch entry automatically. For a manual local checkout, copy this package into the DSH profile's `node_modules` directory and add it to the profile patch:
 
 ```yaml
 - insert:
