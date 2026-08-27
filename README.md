@@ -43,6 +43,8 @@ Run from a DSH Desktop checkout with the bundled Node runtime:
 vendor/node/node.exe --test scripts/test/unit-plugin-trustlens-protocol.test.mjs scripts/test/unit-plugin-trustlens.test.cjs
 ```
 
+The same checks are available with `npm test` after installing dependencies.
+
 ## Limitations
 
 Static scanning is intentionally conservative and can produce findings for security-related example strings or regular expressions. It is a review signal, not proof of malware. Semantic review also requires an active DSH model and credentials; if the current model cannot be determined, the plugin fails closed.
